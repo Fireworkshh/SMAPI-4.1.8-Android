@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>ConsoleCommands</AssemblyName>
+    <RootNamespace>StardewModdingAPI.Mods.ConsoleCommands</RootNamespace>
+    <TargetFramework>net8.0</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <Import Project="..\..\build\common.targets" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\SMAPI\SMAPI.csproj" Private="False" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework" HintPath="$(GamePath)\MonoGame.Framework.dll" Private="False" />
+    <Reference Include="Stardew Valley" HintPath="$(GamePath)\Stardew Valley.dll" Private="False" />
+    <Reference Include="StardewValley.GameData" HintPath="$(GamePath)\StardewValley.GameData.dll" Private="False" />
+    <Reference Include="xTile" HintPath="$(GamePath)\xTile.dll" Private="False" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="manifest.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

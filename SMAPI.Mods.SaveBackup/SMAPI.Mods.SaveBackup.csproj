@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>SaveBackup</AssemblyName>
+    <RootNamespace>StardewModdingAPI.Mods.SaveBackup</RootNamespace>
+    <TargetFramework>net8.0</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <Import Project="..\..\build\common.targets" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\SMAPI\SMAPI.csproj" Private="False" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Stardew Valley" HintPath="$(GamePath)\Stardew Valley.dll" Private="False" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="manifest.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <Import Project="..\SMAPI.Internal\SMAPI.Internal.projitems" Label="Shared" />
+</Project>

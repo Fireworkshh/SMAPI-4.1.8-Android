@@ -1,0 +1,116 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>StardewModdingAPI</AssemblyName>
+    <RootNamespace>StardewModdingAPI</RootNamespace>
+    <Description>The modding API for Stardew Valley.</Description>
+    <TargetFramework>net8.0</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputType>Library</OutputType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+
+    <!--copy dependency DLLs to bin folder so we can include them in installer bundle -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+
+    <!-- tiered compilation breaks Harmony -->
+    <TieredCompilation>false</TieredCompilation>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <StartupObject></StartupObject>
+  </PropertyGroup>
+
+  <Import Project="..\..\build\common.targets" />
+
+  <ItemGroup>
+    <PackageReference Include="Mono.Cecil" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="Pathoschild.Http.FluentClient" />
+    <PackageReference Include="Pintail" />
+    <PackageReference Include="Platonymous.TMXTile" />
+    <PackageReference Include="System.Reflection.Emit" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\melon_data\MelonLoader\net8\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="BmFont">
+      <HintPath>..\..\..\..\..\Stardew Assemblies\Stardew Assemblies\BmFont.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaxyCSharp">
+      <HintPath>..\..\..\..\..\SteamLibrary\steamapps\common\Stardew Valley\GalaxyCSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Java.Interop">
+      <HintPath>C:\Program Files\dotnet\packs\Microsoft.Android.Ref.34\34.0.145\ref\net8.0\Java.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>..\..\..\..\..\Stardew Assemblies\Stardew Assemblies\Lidgren.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Android">
+      <HintPath>C:\Program Files\dotnet\packs\Microsoft.Android.Ref.34\34.0.145\ref\net8.0\Mono.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Android.Export">
+      <HintPath>C:\Program Files\dotnet\packs\Microsoft.Android.Ref.34\34.0.145\ref\net8.0\Mono.Android.Export.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Android.Runtime">
+      <HintPath>C:\Program Files\dotnet\packs\Microsoft.Android.Ref.34\34.0.145\ref\net8.0\Mono.Android.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\..\..\..\..\BaiduNetdiskDownload\decompress-assemblies\decompress-assemblies\uncompressed-Stardew Valley_v1.6.14.2\Monogame\bin\Release\netcoreapp8.0\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Backports">
+      <HintPath>..\..\..\..\melon_data\MelonLoader\net8\MonoMod.Backports.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Core">
+      <HintPath>..\..\..\..\melon_data\MelonLoader\net8\MonoMod.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Iced">
+      <HintPath>..\..\..\..\melon_data\MelonLoader\net8\MonoMod.Iced.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.ILHelpers">
+      <HintPath>..\..\..\..\melon_data\MelonLoader\net8\MonoMod.ILHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Patcher">
+      <HintPath>..\..\..\..\melon_data\MelonLoader\net8\MonoMod.Patcher.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour">
+      <HintPath>..\..\..\..\melon_data\MelonLoader\net8\MonoMod.RuntimeDetour.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Utils">
+      <HintPath>..\..\..\..\melon_data\MelonLoader\net8\MonoMod.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp">
+      <HintPath>..\..\..\..\..\BaiduNetdiskDownload\decompress-assemblies\decompress-assemblies\uncompressed-Stardew Valley_v1.6.14.0\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="StardewValley">
+      <HintPath>..\..\..\..\..\BaiduNetdiskDownload\decompress-assemblies\decompress-assemblies\uncompressed-Stardew Valley_v1.6.14.3\StardewValley.dll</HintPath>
+    </Reference>
+    <Reference Include="StardewValley.GameData">
+      <HintPath>..\..\..\..\..\BaiduNetdiskDownload\decompress-assemblies\decompress-assemblies\uncompressed-Stardew Valley_v1.6.14.3\StardewValley.GameData.dll</HintPath>
+    </Reference>
+    <Reference Include="xTile">
+      <HintPath>..\..\..\..\..\Stardew Assemblies\Stardew Assemblies\xTile.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SMAPI.Toolkit.CoreInterfaces\SMAPI.Toolkit.CoreInterfaces.csproj" />
+    <ProjectReference Include="..\SMAPI.Toolkit\SMAPI.Toolkit.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="SMAPI.config.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\SMAPI.Web\wwwroot\SMAPI.metadata.json" Link="SMAPI.metadata.json" CopyToOutputDirectory="PreserveNewest" />
+
+    <None Update="i18n\*" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="steam_appid.txt" CopyToOutputDirectory="PreserveNewest" />
+
+    <Compile Include="..\SMAPI.Toolkit\Framework\LowLevelEnvironmentUtility.cs" Link="Framework\Utilities\LowLevelEnvironmentUtility.cs" />
+
+    <!-- app icon on Linux/macOS, and for some Windows users -->
+    <EmbeddedResource Include="Icon.bmp" LogicalName="Icon.bmp" />
+  </ItemGroup>
+
+  <Import Project="..\SMAPI.Internal\SMAPI.Internal.projitems" Label="Shared" />
+</Project>
